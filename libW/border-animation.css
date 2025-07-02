@@ -1,0 +1,64 @@
+/*animaçáo de borda que se mexe e 360 graus*/
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card::after, .card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    background-image: conic-gradient(from var(--angle), blue, red,rgb(8, 219, 202),purple,blue);
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+.card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+/*animação do effeito de onde parte*/
+@keyframes spin{
+    from{
+        --angle:0deg
+    }
+    to{
+        --angle:360deg
+    }
+}
+
+/*animação de butão com gradiente e sombra*/
+
+.open-element-button{
+    color: rgb(245, 245, 245);
+    padding: 5px 25px;
+    font-size: 1.7rem;
+    font-family: 'Raleway';
+    background: #0f0f0f;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.open-element-button::after{
+    content: '';
+    position: absolute;
+    height: 107%;
+    width: 102%;
+    background-image: linear-gradient(to bottom right,#008cff,#e100ff );
+    border-radius: 1000px;
+    z-index: -1;
+}
+.open-element-button:hover{
+    z-index: 0;
+    box-shadow: 40px 0 100px #008cff, -40px 0 100px #e100ff;
+    transition: .1s ease;
+}
